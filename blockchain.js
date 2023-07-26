@@ -33,6 +33,9 @@ function calculateBlockHash({ blockNo, data, nounce, previousHash }) {
 }
 
 function mineBlock(data) {
+  if (!data) {
+    throw new Error('Data is not provided.');
+  }
 
 let blockNo = (blockchain.length + 1).toString();
 let nounce = 0;
@@ -55,6 +58,7 @@ let blockHash;
      throw new Error("Couldn't find nounce in 100000 iterations");
     }
   }
+   
    const newBlock = {
     
     blockNo,
